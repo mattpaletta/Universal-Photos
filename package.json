@@ -3,27 +3,28 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "start": "node node_modules/react-native/local-cli/cli.js start --config ../../../../rn-cli.config.js",
     "test": "jest",
     "ios": "react-native run-ios",
     "android": "react-native run-android",
     "windows": "react-native run-windows",
-    "macos": "react-native-macos run-macos"
+    "macos": "react-native-macos run-macos --config ../../../../rn-cli.config.js"
   },
   "dependencies": {
-    "react": "16.0.0-alpha.12",
+    "react": "^16.3.1",
     "react-native": "^0.55.3",
     "react-native-macos": "^0.16.1",
     "react-native-windows": "^0.55.0-rc.0"
   },
   "devDependencies": {
+    "babel-plugin-module-resolver": "^3.1.1",
     "babel-jest": "22.4.3",
     "babel-preset-react-native": "^4.0.0",
     "jest": "22.4.3",
-    "react-test-renderer": "^16.0.0",
+    "react-test-renderer": "^16.3.1",
     "rnpm-plugin-windows": "^0.2.8"
   },
   "jest": {
-    "preset": "react-native-macos"
+    "preset": "react-native"
   }
 }

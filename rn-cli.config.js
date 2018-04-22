@@ -7,31 +7,45 @@ const sharedBlacklist = [
 
     'downstream/core/invariant.js',
 
-    /website\/node_modules\/.*/,
-
     // TODO(jkassens, #9876132): Remove this rule when it's no longer needed.
     'Libraries/Relay/relay/tools/relayUnstableBatchedUpdates.js',
 ];
 
 const platformBlacklists = {
-    web: [
-        '.ios.js',
-        '.android.js',
-    ],
-    ios: [
-        '.web.js',
-//    '.android.js',
-        /node_modules\/react-native-macos\/.*/,
-    ],
-    android: [
-        '.web.js',
-        '.ios.js',
-        /node_modules\/react-native-macos\/.*/,
-    ],
+    // /*
+    // web: [
+    //     '.windows.js',
+    //     '.macos.js',
+    //     '.ios.js',
+    //     '.android.js',
+    //     /node_modules\/react-native\/.*/,
+    //     /node_modules\/react-native-macos\/.*/,
+    //     /node_modules\/react-native-windows\/.*/,
+    //     /node_modules\/[^/]+\/\.git\/.*/,
+    // ],
+    // ios: [
+    //     '.web.js',
+    //     '.android.js',
+    //     '.macos.js',
+    //     /node_modules\/react-native-macos\/.*/,
+    //     /node_modules\/react-native-windows\/.*/,
+    //     /node_modules\/[^/]+\/\.git\/.*/,
+    // ],
+    // android: [
+    //     '.web.js',
+    //     '.ios.js',
+    //     /node_modules\/react-native-macos\/.*/,
+    //     /node_modules\/react-native-windows\/.*/,
+    //     /node_modules\/[^/]+\/\.git\/.*/,
+    // ],*.
     macos: [
         '.ios.js',
         '.android.js',
+        '.windows.js',
+        /windows/,
         /node_modules\/react-native\/.*/,
+        /node_modules\/react-native-windows/,
+        /node_modules\/[^/]+\/\.git\/.*/,
     ],
 };
 
@@ -58,10 +72,10 @@ function blacklist(platform, additionalBlacklist) {
 }
 
 module.exports = {
-    getBlacklistRE(platform) {
+    getBlacklistRE() {
         if (process && process.argv.filter(a => a.indexOf('react-native-macos') > -1).length > 0) {
             return blacklist('macos')
         }
-        return blacklist(platform);
+        return blacklist('macos');
     },
 };
