@@ -1,1 +1,0 @@
-export const HELP_REQUESTED = 'HELP_REQUESTED';
